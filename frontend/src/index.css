@@ -48,6 +48,23 @@ brand button {
 .header-links a:hover {
   color: #ff8000;
 }
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.content-margined {
+  margin: 1rem;
+}
+.table {
+  width: 100%;
+}
+th {
+  text-align: left;
+}
+tbody > tr:nth-child(odd) {
+  background-color: #f0f0f0;
+}
 sidebar {
   position: fixed;
   transform: translateX(-30rem);

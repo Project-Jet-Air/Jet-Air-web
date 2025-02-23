@@ -1,5 +1,11 @@
 import React from "react";
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+import Home from './Home/Home';
+import Products from './Products/Products';
+import Orders from './Orders/Orders';
+import OrderDetail from './Orders/OrderDetail';
 
 function App() {
   const openMenu = () => {
@@ -19,14 +25,21 @@ function App() {
           <span>Jet Air</span> {/* ✅ Left aligned */}
         </div>
         <nav className="header-links">
-          <a href="#">Home</a>
-          <a href="#">Catalog</a> {/* ✅ Right aligned */}
+          <Link to="/">Home</Link>
+          <Link to="/catalog">Catalog</Link>
+          <Link to="/orders">Orders</Link>
         </nav>
       </header>
 
       {/* Main Content */}
-      <main>
-        <h1>Home</h1>
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path='/catalog' element={<Products/>} />
+
+          <Route path="orders" element={<Orders />}></Route>
+          <Route path="order/:id" element={<OrderDetail />}></Route>
+        </Routes>
       </main>
 
       {/* Sidebar */}
