@@ -1,4 +1,6 @@
 import React from "react";
+import { RoutePath as Router, Route, Switch, Link } from "react-router-dom";
+import Payment from './Payment/Payment'; // Import payment part
 import "./App.css";
 
 function App() {
@@ -11,6 +13,7 @@ function App() {
   };
 
   return (
+    <Router>
     <div className="grid-container">
       {/* Header */}
       <header className="header">
@@ -19,14 +22,22 @@ function App() {
           <span>Jet Air</span> {/* ✅ Left aligned */}
         </div>
         <nav className="header-links">
-          <a href="#">Home</a>
-          <a href="#">Catalog</a> {/* ✅ Right aligned */}
+          <Link to="/">Home</Link> {/* Link to Home */}
+          <Link to="/catalog">Catalog</Link> {/* Link to Catalog */}
+          <Link to="/payment">Payment</Link> {/* Link to Payment */}          
         </nav>
       </header>
 
       {/* Main Content */}
       <main>
-        <h1>Home</h1>
+        <Switch>
+          <Route path="/" exact>
+          <h1>Home</h1>
+          </Route>
+          <Route path="/payment">
+          <Payment />
+          </Route>
+        </Switch>
       </main>
 
       {/* Sidebar */}
@@ -42,7 +53,7 @@ function App() {
       {/* Footer */}
       <footer>&copy; 2024 Jet Air</footer>
     </div>
+    </Router>
   );
 }
-
 export default App;
